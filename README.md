@@ -3,17 +3,17 @@
 You'll need libssh2
 
 For Debain running PHP 5
-```php
-apt-get install php5-ssh2
+```
+$ apt-get install php5-ssh2
 ```
 For machines running PHP 7
-```php
-sudo apt-get install libssh2–1-dev libssh2–1
+```
+$ sudo apt-get install libssh2–1-dev libssh2–1
 ```
 
 Once you're done restart nginx / apache
-```php
-/etc/init.d/nginx restart
+```
+$ /etc/init.d/nginx restart
 ```
 
 
