@@ -1,6 +1,6 @@
 <?php
 
-namespace miradnan\ssh;
+namespace miradnan\ssh2;
 
 use Exception;
 
