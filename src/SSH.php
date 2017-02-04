@@ -79,12 +79,15 @@ class SSH {
         if (!($stream = ssh2_exec($this->connection, $cmd))) {
             throw new Exception('SSH command failed');
         }
-        stream_set_blocking($stream, true);
-        $data = "";
-        while ($buf = fread($stream, 4096)) {
-            $data .= $buf;
-        }
-        fclose($stream);
+        $dio_stream = ssh2_fetch_stream($stream, SSH2_STREAM_STDIO);
+        $err_stream = ssh2_fetch_stream($stream, SSH2_STREAM_STDERR);
+
+        stream_set_blocking($dio_stream, true);
+        stream_set_blocking($err_stream, true);
+
+        $data['output'] = stream_get_contents($dio_stream);
+        $data['error'] = stream_get_contents($err_stream);
+        
         return $data;
     }
 
